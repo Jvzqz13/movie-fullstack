@@ -11,6 +11,9 @@ useEffect(() => {
   // This runs on mount *and also* if either a or b have changed since the last render
 }, [a, b]);
 
+using null inside useState init in null 
+--> movies && movies.map
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
