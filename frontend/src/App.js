@@ -8,11 +8,13 @@ import MovieDetails from './components/MovieDetails';
 
 //Context
 import { ThemeContext } from './context/ThemeContext';
+import { UserContext } from './context/UserContext';
 
 function App() {
 
   const [movies , setMovies] = useState([]);
   const [ theme, setTheme ] = useState('light')
+  const [ user, setUser ] = useState(null)
 
   // Connects to the backend //
   //useEffect
@@ -33,20 +35,33 @@ function App() {
 
   return (
 
+    <UserContext.Provider value={{user, setUser}} >
+
     <ThemeContext.Provider value={{theme, setTheme}}>
-
-    <div className="App">
-    <h1> Movies FullStack Appp </h1>
-    <NavBar />
-
+    <div>
+      {
+        user ? (
+          <>
+          <NavBar />
+          
     <Routes>
       <Route path='/' element={ <MainPage /> } />
       <Route path="/movies" element={ <MoviesList movies={movies}/> } />
       <Route path='/movies/:id' element={ <MovieDetails />} />
     </Routes>
+          </>
+        ) : (
+          <MainPage />
+        )
+      }
+    </div>
+    <div className="App">
+    <h1> Movies FullStack Appp </h1>
+
 
     </div>
     </ThemeContext.Provider>
+    </UserContext.Provider>
   );
 }
 

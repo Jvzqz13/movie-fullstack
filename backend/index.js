@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import moviesRouter from './routes.js/movies.js';
+import usersRouter from './routes.js/users.js'
 
 console.log(process.env.ATLAS_URI);
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended: true})); // Allows data in url string
 
 // Routes
 app.use ('/api/movies', moviesRouter)
+app.use('/api/users', usersRouter)
 
 app.get('/', (req, res) => {
     res.send('backend...')

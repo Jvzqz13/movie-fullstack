@@ -1,16 +1,22 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useContext } from 'react'
+import axios from 'axios'
+import { UserContext } from '../../context/UserContext'
 
 
 
 
 function MainPage (){
+    const userCtx = useContext(UserContext);
+    const { setUser } = userCtx
+
+
 
     const emailInputRef = useRef(null)
     const passwordInputRef = useRef(null)
 
     const [showSignUp, setShowSignUp] = useState(false)
 
-    const handleSignIn = (e) => {
+    const handleSignIn =  async (e) => {
         e.preventDefault();
         console.log(emailInputRef.current.value);
         console.log(passwordInputRef.current.value);
@@ -23,11 +29,19 @@ function MainPage (){
             passwordInputRef.current.focus();
             return;
         }
+        //make a POST req to backend
+        const res = await axios.post('http://localhost:4000/api/users/signin', {
+            email: emailInputRef.current.value,
+            password: passwordInputRef.current.value
+        });
+
+        console.log(res.data);
+        setUser(res.data)
 
        
     }
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         console.log(emailInputRef.current.value);
         console.log(passwordInputRef.current.value);
@@ -40,6 +54,15 @@ function MainPage (){
             passwordInputRef.current.focus();
             return;
         }
+
+            // makes Post req to backend
+        const res = await axios.post('http://localhost:4000/api/users/signup', {
+            email: emailInputRef.current.value,
+            password: passwordInputRef.current.value
+        });
+
+        console.log(res.data);
+        setUser(res.data)
 
        
     }
