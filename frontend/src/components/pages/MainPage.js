@@ -30,7 +30,7 @@ function MainPage (){
             return;
         }
         //make a POST req to backend
-        const res = await axios.post('http://localhost:4000/api/users/signin', {
+        const res = await axios.post('https://movies-full-stack-backend-cdyg.onrender.com/api/users/signin', {
             email: emailInputRef.current.value,
             password: passwordInputRef.current.value
         });
@@ -56,7 +56,7 @@ function MainPage (){
         }
 
             // makes Post req to backend
-        const res = await axios.post('http://localhost:4000/api/users/signup', {
+        const res = await axios.post('https://movies-full-stack-backend-cdyg.onrender.com/api/users/signup', {
             email: emailInputRef.current.value,
             password: passwordInputRef.current.value
         });

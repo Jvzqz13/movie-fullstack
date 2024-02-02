@@ -9,12 +9,12 @@ function MovieDetails() {
 
 
     useEffect(()=> {
-        console.log(`http://localhost:4000/movies/${params.id}`);
+        console.log(`https://movies-full-stack-backend-cdyg.onrender.com/movies/${params.id}`);
 
         //function to fetch to fetch the movie by ID 
         const fetchData = async ()=> {
             try {
-                const res = await fetch(`http://localhost:4000/api/movies/${params.id}`)
+                const res = await fetch(`https://movies-full-stack-backend-cdyg.onrender.com/api/movies/${params.id}`)
                 const data = await res.json();
                 console.log(data);
 
