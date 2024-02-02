@@ -6,9 +6,13 @@ import MainPage from './components/pages/MainPage';
 import NavBar from './components/NavBar';
 import MovieDetails from './components/MovieDetails';
 
+//Context
+import { ThemeContext } from './context/ThemeContext';
+
 function App() {
 
   const [movies , setMovies] = useState([]);
+  const [ theme, setTheme ] = useState('light')
 
   // Connects to the backend //
   //useEffect
@@ -28,6 +32,9 @@ function App() {
 
 
   return (
+
+    <ThemeContext.Provider value={{theme, setTheme}}>
+
     <div className="App">
     <h1> Movies FullStack Appp </h1>
     <NavBar />
@@ -39,6 +46,7 @@ function App() {
     </Routes>
 
     </div>
+    </ThemeContext.Provider>
   );
 }
 

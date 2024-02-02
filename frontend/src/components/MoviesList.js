@@ -3,9 +3,18 @@
 import MovieItem from "./MovieItem";
 import Spinner from 'react-bootstrap/Spinner';
 
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+
 function MoviesList({movies}) {
+    const themeCtx = useContext(ThemeContext);
+    const { theme } = themeCtx;
+
     return (
-        <div>
+
+        // <div style={{backgroundColor: theme === 'light' ? '#fff': '#000' }} >
+            <div className={theme === 'light' ? 'lightMode' : 'darkMode'} >
+
             <h1>
                 Movies List
             </h1>
@@ -17,9 +26,10 @@ function MoviesList({movies}) {
                 <span className="visually"> Loading... </span>
               </Spinner>
             
-            }
+        }
             </div>
         </div>
+
     )
 }
 
